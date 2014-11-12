@@ -165,8 +165,6 @@ function loadPage(_langID, _parent,_nodedict, _graph)
 		    			_graph.nodes.push(_nodedict[newpage]);
 		    		}
 		    		_graph.edges.push({source:_parent.id, target:_nodedict[newpage].id})
-		    		//console.log('added '+newpage); 
-		    		//console.log(JSON.stringify(_graph, null, 2));
 		    	}
 	    	} catch (e)
 	    	{
@@ -238,9 +236,9 @@ function GEXFexport(_netName, _graph)
 	for(var n in _graph.nodes)
 	{
 		var node = _graph.nodes[n];
-		console.log(node.color);
+		console.log("esporto "+node.name);
 		var color = hexToRgb(node.color)
-		nodeoutput += '<node id="' + n + '" label="' + escapeRegExp(node.name) + '">\r';
+		nodeoutput += '<node id="' + n + '" label="' + node.name + '">\r';
 		nodeoutput += '<attvalues>\r';
 		//save node variables
 		nodeoutput += '<attvalue for="status" value="' + node.status + '"/>\r';
@@ -319,10 +317,4 @@ function getDate() {
   var d = new Date(Date.now());
   //console.log(d);
   return [d.getFullYear(), pad(d.getMonth()+1), pad(d.getDate())].join('-');
-}
-
-//http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
-
-function escapeRegExp(str) {
-  return $('nulla').text(str).html();
 }
